@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include <string>
 
@@ -26,6 +27,7 @@ public:
     void completeTask(int index) {
         if (index >= 0 && index < tasks.size()) {
             tasks[index].markCompleted();
+            std::cout << "Task added: " << description << std::endl;
         } else {
             std::cout << "Invalid task index." << std::endl;
         }
@@ -34,10 +36,18 @@ public:
 
 int main() {
     TodoList todo;
+
+    std::string taskDesc;
+
+    std::cout << "Enter a task description: ";
+    std::getline(std::cin, taskDesc);
+    todo.addTask(taskDesc);
+
     todo.addTask("Buy groceries");
     todo.addTask("Finish homework");
 
-    todo.completeTask(1); // Mark "Buy groceries" as completed
+    todo.completeTask(0);
 
     return 0;
 }
+
