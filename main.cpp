@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <vector>
 #include <string>
@@ -22,14 +21,19 @@ public:
 
     void addTask(std::string description) {
         tasks.push_back(Task(description));
+        std::cout << "Task added: " << description << std::endl;
     }
+  
+    void viewTasks() {
+        for (const auto& task : todolist) {
+            std::cout << "- " << task._description << std::endl;
 
     void completeTask(int index) {
         if (index >= 0 && index < tasks.size()) {
             tasks[index].markCompleted();
-            std::cout << "Task added: " << description << std::endl;
         } else {
             std::cout << "Invalid task index." << std::endl;
+
         }
     }
 };
@@ -45,6 +49,9 @@ int main() {
 
     todo.addTask("Buy groceries");
     todo.addTask("Finish homework");
+  
+    std::cout << "Your tasks:\n";
+    todo.viewTasks();
 
     todo.completeTask(0);
 
