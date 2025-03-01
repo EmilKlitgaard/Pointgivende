@@ -48,6 +48,20 @@ public:
             [](const Task& a, const Task& b) {return a.priority > b.priority;}
         );
     }
+    
+    void viewTasksByStatus(bool showCompleted) {
+        std::cout <<(showCompleted?"\nCompleted tasks:\n":"\nPending Tasks:\n");
+        for (int i = 0; i<tasks.size();i++){
+            if (tasks[i].completed==showCompleted) {
+                std::cout << i << ": " << tasks[i].description << " | " << tasks[i].priority;
+                if (tasks[i].completed){
+                    std::cout << " | completed";
+                }
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl; 
+    }
 
     void completeTask(int index) {
         if (index >= 0 && index < tasks.size()) {
@@ -75,6 +89,7 @@ int main() {
     todo.deleteTask(0);
   
     todo.viewTasks();
+    todo.viewTasksByStatus(true);
 
     todo.prioritizeTasks();
     todo.viewTasks();
