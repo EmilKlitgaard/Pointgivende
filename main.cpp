@@ -27,6 +27,13 @@ public:
         std::cout << "Task added: " << description << std::endl;
     }
   
+    void deleteTask(int index) {
+        if (index >= 0 && index < tasks.size()) {
+            std::cout << "deleting task:" << tasks[index].description << "\n";
+            tasks.erase(tasks.begin()+index);
+        } 
+    }
+
     void viewTasks() {
         std::cout << "Your tasks:\n";
         for (const auto& task : tasks) {
@@ -65,6 +72,7 @@ int main() {
     todo.addTask("Finish homework", 2);
 
     todo.completeTask(0);
+    todo.deleteTask(0);
   
     todo.viewTasks();
 
